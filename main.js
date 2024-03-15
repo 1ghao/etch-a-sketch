@@ -4,7 +4,23 @@ createGrid(4);
 
 gridContainer.addEventListener("mouseover", (e) => {
   let target = e.target;
-  target.style.backgroundColor = `rgb(${createRandomColor()})`;
+
+  if (target.style.backgroundColor == "") {
+    target.style.backgroundColor = `rgb(${createRandomColor()})`;
+  } else {
+    if (target.style.filter == "") {
+      target.style.filter = "brightness(100%)";
+      reduceBrightness();
+    } else {
+      reduceBrightness();
+    }
+  }
+  function reduceBrightness() {
+    let brightness = parseInt(target.style.filter.replace(/[^0-9]/g, ""));
+    brightness -= 10;
+
+    target.style.filter = `brightness(${brightness}%)`;
+  }
 });
 
 function createRandomColor() {
@@ -13,6 +29,8 @@ function createRandomColor() {
   const green = Math.floor(Math.random() * 256);
   return `${red}, ${blue}, ${green}`;
 }
+
+//create grid button
 
 const creatorButton = document.querySelector("#creator");
 
