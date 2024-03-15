@@ -13,7 +13,7 @@ creatorButton.addEventListener("click", () => {
   let answer;
   do {
     answer = parseInt(prompt("What is the length of the desired side?"));
-  } while (answer > 10 || answer <= 0 || isNaN(answer));
+  } while (answer > 100 || answer <= 0 || isNaN(answer));
 
   createGrid(answer);
   let gridChilds = Array.from(gridContainer.childNodes);
